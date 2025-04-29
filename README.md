@@ -37,3 +37,7 @@ Make sure you have your Google Gemini API Key and set it as an environment varia
 - Make sure your uploaded resume is a PDF.
 - API Quotas apply based on Google Gemini account limits.
 
+# ATS RESUME CHECKER
+# Project:
+# Summary:
+1. 
