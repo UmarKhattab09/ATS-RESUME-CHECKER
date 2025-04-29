@@ -12,7 +12,7 @@ genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 def get_gemini_response(input_prompt, pdf_content, job_desc):
     """Generate AI response using Google Gemini API safely."""
     try:
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        model = genai.GenerativeModel('gemini-2.0-flash')
         response = model.generate_content([input_prompt, pdf_content[0], job_desc])
 
         # Debugging: Print the response to check its structure
@@ -85,6 +85,9 @@ You are an ATS (Applicant Tracking System) scanner with expertise in data scienc
 Provide a match percentage, missing keywords, and final thoughts.
 """
 
+input_prompt4 = """
+Provide a match percentage based on the job description. And provide list of keywords that matches. only few lines answer
+"""
 def main():
     st.subheader("AI Powered Resume Checker")
 
@@ -99,7 +102,7 @@ def main():
         if st.sidebar.button("Find Matches") and job_desc:
             matched_results = []
             for candidate in st.session_state.job_list:
-                response = get_gemini_response(input_prompt1, candidate["pdf_content"], job_desc)
+                response = get_gemini_response(input_prompt4, candidate["pdf_content"], job_desc)
                 matched_results.append({
                 "name": candidate["name"],
                 "job": candidate["job"],
